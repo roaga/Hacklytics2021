@@ -35,7 +35,7 @@ def get_stock_stats(posts):
         for stock in f:
             stock = re.split('[|]',stock)
             symbol = stock[0]
-            name = stock[1].replace('/',' ') #rmv all '/' from name
+            name = stock[1].replace('/',' ').split('-')[0] #rmv all '/' from name
             count = 0
             polarity = 0
             weight = 0
@@ -125,7 +125,7 @@ def upload(stocks_data):
                 "polarity": (stock_data["polarity"] + 0.5 * old_data["polarity"]) / 1.5,
                 "popularity": (stock_data["score"] + stock_data["created"] / 100000 + 0.5 * old_data["popularity"]) / 1.5,
                 "engagement": (stock_data["num_comments"] + 0.5 * old_data["engagement"]) / 1.5,
-                "weight": (stock_data["weight"] + 0.5 * old_data["weight"]) / 1.5
+                "weight": (stock_data["weight"] + (0.5 * old_data["weight"])) / 1.5
             })        
         else: 
             key = stock_data["title"]
@@ -145,6 +145,6 @@ for i, item in enumerate(data):
     weight = weigh(item)
     item["weight"] = weight
 
-#print(data[0]["text"])
 stocks = get_stock_stats(data)
-#upload(stocks)
+upload(stocks)
+
