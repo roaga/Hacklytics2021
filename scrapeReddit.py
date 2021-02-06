@@ -7,8 +7,17 @@ import re
 from ibm_watson import NaturalLanguageUnderstandingV1
 from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
 from ibm_watson.natural_language_understanding_v1 import Features, SentimentOptions
+# import pyrebase
+import firebase_admin
+from firebase_admin import credentials
+from firebase_admin import firestore
+
+cred = credentials.Certificate("./firebaseserviceaccount.json")
+firebase_admin.initialize_app(cred)
+db = firestore.client()
 
 reddit = praw.Reddit(client_id='7pdHgJ0aNnIqkQ', client_secret='QU-vPCVM1dAO3beUcrIghrHraRoULA', user_agent='my_user_agent')
+
 load_dotenv()
 IBM_CLOUD_KEY = os.getenv('IBM_CLOUD_KEY')
 
@@ -82,7 +91,7 @@ def sentimentAnalysis(posts):
     # data = {"data": posts}
     # r = requests.post('http://www.sentiment140.com/api/bulkClassifyJson?appid=ro.agarwal@hotmail.com', data = data)
     # print(r.content)
-    # return r.text #TODO: get response body properly, return ['data'] key's value
+    # return r.text #does not get response body properly, return ['data'] key's value
 
     # using IBM Watson NLU
     for post in posts:
@@ -115,7 +124,33 @@ def scrape():
     
     return posts
 
+def upload(stocks_data):
+    old_stocks_stream = db.collection("stocks").stream()
+    old_stocks = {}
+    for doc in old_stocks_stream:
+        old_stocks[doc.id] = doc.to_dict()
 
+    for stock_data in stocks_data.values():
+        old_data = old_stocks[stock_data["title"]] if stock_data["title"] in old_stocks else None
+        if old_data != None and old_data != {}:
+            db.collection("stocks").document(stock_data["title"]).set({
+                "title": stock_data["title"],
+                "polarity": (stock_data["polarity"] + 0.5 * old_data["polarity"]) / 1.5,
+                "popularity": (stock_data["score"] + stock_data["created"] / 100000 + 0.5 * old_data["popularity"]) / 1.5,
+                "engagement": (stock_data["num_comments"] + 0.5 * old_data["engagement"]) / 1.5,
+                "weight": (stock_data["weight"] + 0.5 * old_data["weight"]) / 1.5
+            })        
+        else: 
+            db.collection("stocks").document(stock_data["title"]).set({
+                "title": stock_data["title"],
+                "polarity": stock_data["polarity"],
+                "popularity": stock_data["score"] + stock_data["created"] / 100000,
+                "engagement": stock_data["num_comments"],
+                "weight": stock_data["weight"]
+            })
+
+
+#TODO: put on periodic loop
 data = scrape()
 data = sentimentAnalysis(data)
 for i, item in enumerate(data):
@@ -125,3 +160,5 @@ for i, item in enumerate(data):
 
 #print(data[0]["text"])
 get_stock_stats(data)
+
+#upload(None)
