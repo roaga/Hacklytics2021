@@ -137,12 +137,6 @@ def upload(stocks_data):
             "weight": stock_data["weight"]
             })
 
-def test_firestore(atock):
-    name = 'AACG-ATA Creativity Global - American Depositary Shares, each representing two common shares'
-    db.collection('stocks').document(name).set({
-        "engagement" :5
-    })
-
 #TODO: put on periodic loop
 data = scrape()
 data = sentimentAnalysis(data)
@@ -153,4 +147,4 @@ for i, item in enumerate(data):
 
 #print(data[0]["text"])
 stocks = get_stock_stats(data)
-upload(stocks)
+#upload(stocks)
