@@ -90,7 +90,7 @@ def upload(stocks_data):
         old_stocks[doc.id] = doc.to_dict()
 
     for stock_data in stocks_data.values():
-        old_data = old_stocks[stock_data["title"]]
+        old_data = old_stocks[stock_data["title"]] if stock_data["title"] in old_stocks else None
         if old_data != None and old_data != {}:
             db.collection("stocks").document(stock_data["title"]).set({
                 "title": stock_data["title"],
