@@ -29,4 +29,4 @@ def scrape():
         })
 
 
-scrape()
+data = scrape()
