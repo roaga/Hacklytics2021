@@ -16,7 +16,7 @@ cred = credentials.Certificate("./firebaseserviceaccount.json")
 firebase_admin.initialize_app(cred)
 db = firestore.client()
 
-reddit = praw.Reddit(client_id='7pdHgJ0aNnIqkQ', client_secret='QU-vPCVM1dAO3beUcrIghrHraRoULA', user_agent='my_user_agent')
+reddit = praw.Reddit(client_id='7pdHgJ0aNnIqkQ', client_secret='QU-vPCVM1dAO3beUcrIghrHraRoULA', user_agent='hacklytics:rhn')
 
 load_dotenv()
 IBM_CLOUD_KEY = os.getenv('IBM_CLOUD_KEY')
@@ -29,44 +29,37 @@ natural_language_understanding = NaturalLanguageUnderstandingV1(
 natural_language_understanding.set_service_url('https://api.au-syd.natural-language-understanding.watson.cloud.ibm.com/instances/90774996-ec17-4440-b524-2c61f3a14481')
 
 def get_stock_stats(posts):
-    stocks = []
+    stocks = {}
     with open('stocknames.txt') as f:
         next(f) #skip header
         for stock in f:
             stock = re.split('[|]',stock)
             symbol = stock[0]
-            name = stock[1]
+            name = stock[1].replace('/',' ') #rmv all '/' from name
             count = 0
             polarity = 0
             weight = 0
             score = 0
+            created = 0
             for post in posts:
-                count+=len(re.findall(symbol,post['text']))  #TODO: match case, match only if there is a space after 
-                #count+=len([m.start() for m in re.finditer(symbol, post['text'])]) #find number of occurences in text
+                count += len(re.findall('\s' + symbol + '\s',' ' + post['text'] + ' '))
                 if count > 0 :
-                    polarity+=post['polarity'] #add post polarity to the stock
-                    weight+=post['weight'] #add weight of post to the stock
-                    score+=post['score']
+                    polarity += post['polarity']
+                    weight += post['weight']
+                    score += post['score']
+                    if post['created'] > created: #most recent post date
+                        created = post['created']
 
-            stocks.append({
-                symbol +'-' + name :
-                {
+            stocks[symbol +'-' + name] = {
                 "title": symbol +'-' + name,
                 "polarity": polarity,
                 "score" : score,
                 "weight": weight,
                 "num_comments" : count,
+                "created" : created
                 }
-            })
+    return stocks
 
-    print(stocks[4])
-
-    #dataframe
-    # df = DataFrame(stocks) #convert list to dataframe
-    # if os.path.exists("stocks.txt"):
-    #     os.remove("stocks.txt")
-    # df.to_csv(r'stocks.txt', header=None, index=None, sep=' ', mode='a') #print to txt file for viewing
-            
 
 def extract_comments(post):
     # comment_text = []
@@ -87,11 +80,6 @@ def weigh(post_data):
     return impact
 
 def sentimentAnalysis(posts):
-    # # using Sentiment140 API
-    # data = {"data": posts}
-    # r = requests.post('http://www.sentiment140.com/api/bulkClassifyJson?appid=ro.agarwal@hotmail.com', data = data)
-    # print(r.content)
-    # return r.text #does not get response body properly, return ['data'] key's value
 
     # using IBM Watson NLU
     for post in posts:
@@ -106,7 +94,7 @@ def scrape():
     posts = []
 
     # get 10 hot posts from the WSB subreddit
-    hot_posts = reddit.subreddit('WallStreetBets').hot(limit=10) #TODO: adjust limit
+    hot_posts = reddit.subreddit('WallStreetBets').hot(limit=1) #TODO: adjust limit
     for post in hot_posts:
         comments = extract_comments(post)
         posts.append({
@@ -121,7 +109,6 @@ def scrape():
             "comments": comments,
             "text": post.title + " " + post.selftext + " " + comments
         })
-    
     return posts
 
 def upload(stocks_data):
@@ -141,14 +128,20 @@ def upload(stocks_data):
                 "weight": (stock_data["weight"] + 0.5 * old_data["weight"]) / 1.5
             })        
         else: 
-            db.collection("stocks").document(stock_data["title"]).set({
-                "title": stock_data["title"],
-                "polarity": stock_data["polarity"],
-                "popularity": stock_data["score"] + stock_data["created"] / 100000,
-                "engagement": stock_data["num_comments"],
-                "weight": stock_data["weight"]
+            key = stock_data["title"]
+            db.collection("stocks").document(key).set({
+            "title": stock_data["title"],
+            "polarity": stock_data["polarity"],
+            "popularity": stock_data["score"] + stock_data["created"] / 100000,
+            "engagement": stock_data["num_comments"],
+            "weight": stock_data["weight"]
             })
 
+def test_firestore(atock):
+    name = 'AACG-ATA Creativity Global - American Depositary Shares, each representing two common shares'
+    db.collection('stocks').document(name).set({
+        "engagement" :5
+    })
 
 #TODO: put on periodic loop
 data = scrape()
@@ -159,6 +152,5 @@ for i, item in enumerate(data):
     item["weight"] = weight
 
 #print(data[0]["text"])
-get_stock_stats(data)
-
-#upload(None)
+stocks = get_stock_stats(data)
+upload(stocks)
