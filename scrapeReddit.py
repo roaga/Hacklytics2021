@@ -26,7 +26,7 @@ def sentimentAnalysis(posts):
     data = {"data": posts}
     r = requests.post('http://www.sentiment140.com/api/bulkClassifyJson?appid=ro.agarwal@hotmail.com', data = data)
     print(r.content)
-    return r.text
+    return r.text #TODO: get response body properly, return ['data'] key's value
 
 
 def scrape():
