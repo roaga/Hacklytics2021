@@ -37,7 +37,7 @@ public class DataPlot : MonoBehaviour
             float x = System.Convert.ToSingle(stock["polarity"]);
             float y =  System.Convert.ToSingle(stock["engagement"]);
             float z =  System.Convert.ToSingle(stock["popularity"]);
-            float size = System.Convert.ToSingle(stock["weight"]) * 50f;
+            float size = System.Convert.ToSingle(stock["weight"]) * 100f;
 
             GameObject dataPoint = Instantiate(PointPrefab, new Vector3(x, y, z), Quaternion.identity);
             dataPoint.transform.parent = PointHolder.transform;
