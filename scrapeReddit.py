@@ -14,19 +14,6 @@ cred = credentials.Certificate("./firebaseserviceaccount.json")
 firebase_admin.initialize_app(cred)
 db = firestore.client()
 
-# config = {
-#     "apiKey": "AIzaSyAo4gZZE5tc9g-do0RAXIjTAvwv-54YoA0",
-#     "authDomain": "hacklytics-2021-626b7.firebaseapp.com",
-#     "projectId": "hacklytics-2021-626b7",
-#     "databaseURL": "https://hacklytics-2021.firebaseio.com",
-#     "storageBucket": "hacklytics-2021-626b7.appspot.com",
-#     "messagingSenderId": "1024219270230",
-#     "appId": "1:1024219270230:web:102279cff4ccdc45effff7"
-# }
-
-# firebase = pyrebase.initialize_app(config)
-# db = firebase.database()
-
 reddit = praw.Reddit(client_id='7pdHgJ0aNnIqkQ', client_secret='QU-vPCVM1dAO3beUcrIghrHraRoULA', user_agent='my_user_agent')
 
 load_dotenv()
@@ -122,6 +109,7 @@ def upload(stocks_data):
             })
 
 
+#TODO: put on periodic loop
 data = scrape()
 data = sentimentAnalysis(data)
 for i, item in enumerate(data):
