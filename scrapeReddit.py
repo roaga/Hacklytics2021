@@ -12,7 +12,7 @@ import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
 
-cred = credentials.Certificate("./firebaseserviceaccount.json")
+cred = credentials.Certificate("./test-firestore-34b57-firebase-adminsdk-p4s0z-d89ab3d6fb.json")
 firebase_admin.initialize_app(cred)
 db = firestore.client()
 
@@ -51,7 +51,7 @@ def get_stock_stats(posts):
                         created = post['created']
 
             stocks[symbol +'-' + name] = {
-                "title": symbol +'-' + name,
+                "title": symbol +' - ' + name,
                 "polarity": polarity,
                 "score" : score,
                 "weight": weight,
@@ -147,4 +147,3 @@ for i, item in enumerate(data):
 
 stocks = get_stock_stats(data)
 upload(stocks)
-
