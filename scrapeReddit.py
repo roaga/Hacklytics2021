@@ -2,6 +2,8 @@ import requests
 import os
 from dotenv import load_dotenv
 import praw
+from pandas import DataFrame
+import re
 from ibm_watson import NaturalLanguageUnderstandingV1
 from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
 from ibm_watson.natural_language_understanding_v1 import Features, SentimentOptions
@@ -16,6 +18,41 @@ natural_language_understanding = NaturalLanguageUnderstandingV1(
     authenticator=authenticator
 )
 natural_language_understanding.set_service_url('https://api.au-syd.natural-language-understanding.watson.cloud.ibm.com/instances/90774996-ec17-4440-b524-2c61f3a14481')
+
+def get_stock_stats(posts):
+    stocks = []
+    with open('stocknames.txt') as f:
+        next(f) #skip header
+        for stock in f:
+            stock = re.split('[|]',stock)
+            #symbol = stock[:stock.index("|")] 
+            symbol = stock[0]
+            name = stock[1]
+            #currently recording polarity and weight even though weight does account for polarity
+            count = 0
+            polarity = 0
+            weight = 0
+            for post in posts:
+                count+=len(re.findall(symbol,post['text']))  #TODO: match case, match only if there is a space after 
+                #count+=len([m.start() for m in re.finditer(symbol, post['text'])]) #find number of occurences in text
+                if count > 0 :
+                    polarity+=post['polarity'] #add post polarity to the stock
+                    weight+=post['weight'] #add weight of post to the stock
+
+            stocks.append({
+                "Symbol": symbol,
+                "Count" : count,
+                "Polarity": polarity,
+                "Weight": weight,
+                "Name" : name,
+            })
+
+    df = DataFrame(stocks) #convert list to dataframe
+
+    if os.path.exists("stocks.txt"):
+        os.remove("stocks.txt")
+    df.to_csv(r'stocks.txt', header=None, index=None, sep=' ', mode='a') #print to txt file for viewing
+            
 
 def extract_comments(post):
     # comment_text = []
@@ -55,7 +92,7 @@ def scrape():
     posts = []
 
     # get 10 hot posts from the WSB subreddit
-    hot_posts = reddit.subreddit('WallStreetBets').hot(limit=1) #TODO: adjust limit
+    hot_posts = reddit.subreddit('WallStreetBets').hot(limit=10) #TODO: adjust limit
     for post in hot_posts:
         comments = extract_comments(post)
         posts.append({
@@ -77,8 +114,9 @@ def scrape():
 data = scrape()
 data = sentimentAnalysis(data)
 for i, item in enumerate(data):
-    print(item)
+    #print(item)
     weight = weigh(item)
     item["weight"] = weight
 
-print(data)
+#print(data[0]["text"])
+get_stock_stats(data)
