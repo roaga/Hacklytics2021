@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>1024219270230-qdasmss2v0ng01bproasalka9bt6uplk.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.1024219270230-qdasmss2v0ng01bproasalka9bt6uplk</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCU6uI7xkkTnNxnecYkHpo_sIvSa1CZBa4</string>
+	<key>GCM_SENDER_ID</key>
+	<string>1024219270230</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.rohanagarwal.hacklytics2021</string>
+	<key>PROJECT_ID</key>
+	<string>hacklytics-2021-626b7</string>
+	<key>STORAGE_BUCKET</key>
+	<string>hacklytics-2021-626b7.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:1024219270230:ios:567e3ddc6b076415effff7</string>
+</dict>
+</plist>
