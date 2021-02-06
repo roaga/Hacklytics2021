@@ -5,19 +5,27 @@ import praw
 from ibm_watson import NaturalLanguageUnderstandingV1
 from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
 from ibm_watson.natural_language_understanding_v1 import Features, SentimentOptions
-import pyrebase
+# import pyrebase
+import firebase_admin
+from firebase_admin import credentials
+from firebase_admin import firestore
 
-config = {
-    "apiKey": "AIzaSyAo4gZZE5tc9g-do0RAXIjTAvwv-54YoA0",
-    "authDomain": "hacklytics-2021-626b7.firebaseapp.com",
-    "projectId": "hacklytics-2021-626b7",
-    "storageBucket": "hacklytics-2021-626b7.appspot.com",
-    "messagingSenderId": "1024219270230",
-    "appId": "1:1024219270230:web:102279cff4ccdc45effff7"
-}
+cred = credentials.Certificate("./firebaseserviceaccount.json")
+firebase_admin.initialize_app(cred)
+db = firestore.client()
 
-firebase = pyrebase.initialize_app(config)
-db = firebase.database()
+# config = {
+#     "apiKey": "AIzaSyAo4gZZE5tc9g-do0RAXIjTAvwv-54YoA0",
+#     "authDomain": "hacklytics-2021-626b7.firebaseapp.com",
+#     "projectId": "hacklytics-2021-626b7",
+#     "databaseURL": "https://hacklytics-2021.firebaseio.com",
+#     "storageBucket": "hacklytics-2021-626b7.appspot.com",
+#     "messagingSenderId": "1024219270230",
+#     "appId": "1:1024219270230:web:102279cff4ccdc45effff7"
+# }
+
+# firebase = pyrebase.initialize_app(config)
+# db = firebase.database()
 
 reddit = praw.Reddit(client_id='7pdHgJ0aNnIqkQ', client_secret='QU-vPCVM1dAO3beUcrIghrHraRoULA', user_agent='my_user_agent')
 
@@ -54,7 +62,7 @@ def sentimentAnalysis(posts):
     # data = {"data": posts}
     # r = requests.post('http://www.sentiment140.com/api/bulkClassifyJson?appid=ro.agarwal@hotmail.com', data = data)
     # print(r.content)
-    # return r.text #TODO: get response body properly, return ['data'] key's value
+    # return r.text #does not get response body properly, return ['data'] key's value
 
     # using IBM Watson NLU
     for post in posts:
@@ -88,11 +96,16 @@ def scrape():
     return posts
 
 def upload(stocks_data):
-    stocks_data = {""}
-    for stock_data in stocks_data:
-        old_data =  db.child("stocks").child(stock_data["title"]).get().val()
+    stocks_data = {"GME - GameStop" : {"title": "GME - GameStop", "polarity": 1, "score": 3, "created": 4, "weight": 5, "num_comments": 10}}
+    old_stocks_stream = db.collection("stocks").stream()
+    old_stocks = {}
+    for doc in old_stocks_stream:
+        old_stocks[doc.id] = doc.to_dict()
+
+    for stock_data in stocks_data.values():
+        old_data = old_stocks[stock_data["title"]]
         if old_data != None and old_data != {}:
-            db.child("stocks").child(stock_data["title"]).set({
+            db.collection("stocks").document(stock_data["title"]).set({
                 "title": stock_data["title"],
                 "polarity": (stock_data["polarity"] + 0.5 * old_data["polarity"]) / 1.5,
                 "popularity": (stock_data["score"] + stock_data["created"] / 100000 + 0.5 * old_data["popularity"]) / 1.5,
@@ -100,7 +113,7 @@ def upload(stocks_data):
                 "weight": (stock_data["weight"] + 0.5 * old_data["weight"]) / 1.5
             })        
         else: 
-            db.child("stocks").child(stock_data["title"]).set({
+            db.collection("stocks").document(stock_data["title"]).set({
                 "title": stock_data["title"],
                 "polarity": stock_data["polarity"],
                 "popularity": stock_data["score"] + stock_data["created"] / 100000,
@@ -115,4 +128,4 @@ for i, item in enumerate(data):
     weight = weigh(item)
     item["weight"] = weight
 
-print(data)
+upload(None)
