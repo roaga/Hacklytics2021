@@ -32,7 +32,7 @@ def get_stock_stats(posts):
             weight = 0
             score = 0
             for post in posts:
-                count+=len(re.findall(symbol,post['text']))  #TODO: match case, match only if there is a space after 
+                count+=len(re.findall('\s' + symbol + '\s',' ' + post['text'] + ' '))
                 #count+=len([m.start() for m in re.finditer(symbol, post['text'])]) #find number of occurences in text
                 if count > 0 :
                     polarity+=post['polarity'] #add post polarity to the stock
