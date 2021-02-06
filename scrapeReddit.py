@@ -25,33 +25,38 @@ def get_stock_stats(posts):
         next(f) #skip header
         for stock in f:
             stock = re.split('[|]',stock)
-            #symbol = stock[:stock.index("|")] 
             symbol = stock[0]
             name = stock[1]
-            #currently recording polarity and weight even though weight does account for polarity
             count = 0
             polarity = 0
             weight = 0
+            score = 0
             for post in posts:
                 count+=len(re.findall(symbol,post['text']))  #TODO: match case, match only if there is a space after 
                 #count+=len([m.start() for m in re.finditer(symbol, post['text'])]) #find number of occurences in text
                 if count > 0 :
                     polarity+=post['polarity'] #add post polarity to the stock
                     weight+=post['weight'] #add weight of post to the stock
+                    score+=post['score']
 
             stocks.append({
-                "Symbol": symbol,
-                "Count" : count,
-                "Polarity": polarity,
-                "Weight": weight,
-                "Name" : name,
+                symbol +'-' + name :
+                {
+                "title": symbol +'-' + name,
+                "polarity": polarity,
+                "score" : score,
+                "weight": weight,
+                "num_comments" : count,
+                }
             })
 
-    df = DataFrame(stocks) #convert list to dataframe
+    print(stocks[4])
 
-    if os.path.exists("stocks.txt"):
-        os.remove("stocks.txt")
-    df.to_csv(r'stocks.txt', header=None, index=None, sep=' ', mode='a') #print to txt file for viewing
+    #dataframe
+    # df = DataFrame(stocks) #convert list to dataframe
+    # if os.path.exists("stocks.txt"):
+    #     os.remove("stocks.txt")
+    # df.to_csv(r'stocks.txt', header=None, index=None, sep=' ', mode='a') #print to txt file for viewing
             
 
 def extract_comments(post):
