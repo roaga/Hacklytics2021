@@ -32,7 +32,6 @@ public class DataPlot : MonoBehaviour
  void Update() {
     if (pointList.Count != 0 && !plotted) {
         plotted = true;
-        Debug.Log("Rerendering...");
 
         foreach (Dictionary<string, object> stock in pointList.GetRange(0, 10)) { // TODO: Adjust max stocks rendered
             float x = System.Convert.ToSingle(stock["polarity"]);
@@ -43,6 +42,7 @@ public class DataPlot : MonoBehaviour
             GameObject dataPoint = Instantiate(PointPrefab, new Vector3(x, y, z), Quaternion.identity);
             dataPoint.transform.parent = PointHolder.transform;
             dataPoint.transform.name = (string) stock["title"];
+            dataPoint.GetComponent<DataPt>().SetData(stock);
             dataPoint.GetComponent<Renderer>().material.color = new Color(x,y,z, 1.0f);
             dataPoint.transform.localScale = new Vector3(size, size, size);
         }
