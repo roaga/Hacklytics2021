@@ -88,10 +88,12 @@ def scrape():
     return posts
 
 def upload(stocks_data):
+    stocks_data = {""}
     for stock_data in stocks_data:
         old_data =  db.child("stocks").child(stock_data["title"]).get().val()
         if old_data != None and old_data != {}:
             db.child("stocks").child(stock_data["title"]).set({
+                "title": stock_data["title"],
                 "polarity": (stock_data["polarity"] + 0.5 * old_data["polarity"]) / 1.5,
                 "popularity": (stock_data["score"] + stock_data["created"] / 100000 + 0.5 * old_data["popularity"]) / 1.5,
                 "engagement": (stock_data["num_comments"] + 0.5 * old_data["engagement"]) / 1.5,
@@ -99,6 +101,7 @@ def upload(stocks_data):
             })        
         else: 
             db.child("stocks").child(stock_data["title"]).set({
+                "title": stock_data["title"],
                 "polarity": stock_data["polarity"],
                 "popularity": stock_data["score"] + stock_data["created"] / 100000,
                 "engagement": stock_data["num_comments"],
