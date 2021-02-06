@@ -1,2 +1,4 @@
 .env
 firebaseserviceaccount.json
+**/Firebase/
+Display4D/Assets/Firebase/Plugins/x86_64/FirebaseCppApp-7_0_2.so

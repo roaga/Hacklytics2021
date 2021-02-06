@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine;
 using System.Collections;
 
 public class InputControl : MonoBehaviour
@@ -12,7 +11,7 @@ public class InputControl : MonoBehaviour
    {
        if (Input.GetMouseButton(0))
        {
-           float h = rotateSpeed * Input.GetAxis("Mouse X");
+           float h = rotateSpeed * Input.GetAxis("Mouse X"); // TODO: touch controls
            float v = rotateSpeed * Input.GetAxis("Mouse Y");
 
            if (cameraOrbit.transform.eulerAngles.z + v <= 0.1f || cameraOrbit.transform.eulerAngles.z + v >= 179.9f)
