@@ -5,8 +5,22 @@ import praw
 from ibm_watson import NaturalLanguageUnderstandingV1
 from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
 from ibm_watson.natural_language_understanding_v1 import Features, SentimentOptions
+import pyrebase
+
+config = {
+    "apiKey": "AIzaSyAo4gZZE5tc9g-do0RAXIjTAvwv-54YoA0",
+    "authDomain": "hacklytics-2021-626b7.firebaseapp.com",
+    "projectId": "hacklytics-2021-626b7",
+    "storageBucket": "hacklytics-2021-626b7.appspot.com",
+    "messagingSenderId": "1024219270230",
+    "appId": "1:1024219270230:web:102279cff4ccdc45effff7"
+}
+
+firebase = pyrebase.initialize_app(config)
+db = firebase.database()
 
 reddit = praw.Reddit(client_id='7pdHgJ0aNnIqkQ', client_secret='QU-vPCVM1dAO3beUcrIghrHraRoULA', user_agent='my_user_agent')
+
 load_dotenv()
 IBM_CLOUD_KEY = os.getenv('IBM_CLOUD_KEY')
 
@@ -73,11 +87,28 @@ def scrape():
     
     return posts
 
+def upload(stocks_data):
+    for stock_data in stocks_data:
+        old_data =  db.child("stocks").child(stock_data["title"]).get().val()
+        if old_data != None and old_data != {}:
+            db.child("stocks").child(stock_data["title"]).set({
+                "polarity": (stock_data["polarity"] + 0.5 * old_data["polarity"]) / 1.5,
+                "popularity": (stock_data["score"] + stock_data["created"] / 100000 + 0.5 * old_data["popularity"]) / 1.5,
+                "engagement": (stock_data["num_comments"] + 0.5 * old_data["engagement"]) / 1.5,
+                "weight": (stock_data["weight"] + 0.5 * old_data["weight"]) / 1.5
+            })        
+        else: 
+            db.child("stocks").child(stock_data["title"]).set({
+                "polarity": stock_data["polarity"],
+                "popularity": stock_data["score"] + stock_data["created"] / 100000,
+                "engagement": stock_data["num_comments"],
+                "weight": stock_data["weight"]
+            })
+
 
 data = scrape()
 data = sentimentAnalysis(data)
 for i, item in enumerate(data):
-    print(item)
     weight = weigh(item)
     item["weight"] = weight
 
