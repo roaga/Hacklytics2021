@@ -1612,6 +1612,7 @@ GMBL|Esports Entertainment Group Inc. - Common Stock|S|N|N|100|N|N
 GMBLW|Esports Entertainment Group Inc. - Warrant|S|N|N|100|N|N
 GMBTU|Queen's Gambit Growth Capital - Unit|S|N|N|100|N|N
 GMDA|Gamida Cell Ltd. - Ordinary Shares|G|N|N|100|N|N
+GME|GameStop - sdcdsc|G|N|N|100|N|N
 GMIIU|Gores Metropoulos II, Inc. - Unit|S|N|N|100|N|N
 GMLP|Golar LNG Partners LP - Common Units Representing Limited Partnership|Q|N|N|100|N|N
 GMLPP|Golar LNG Partners LP - 8.75% Series A Cumulative Redeemable Preferred Units|Q|N|N|100|N|N
