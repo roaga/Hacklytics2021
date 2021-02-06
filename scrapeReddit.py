@@ -41,10 +41,8 @@ def scrape():
 
 
 data = scrape()
-weights = []
-
 for i, item in enumerate(data):
     weight = weigh(item)
-    weights.append({item["id"]: weight})
+    data.append({"weight": weight})
 
-print(weights)
+print(data)
