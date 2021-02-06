@@ -32,7 +32,7 @@ def weigh(post_data):
     num_comments = post_data["num_comments"]
     polarity = post_data["polarity"]
 
-    impact = score + created / 100000 + num_comments * 10 + abs(2 - polarity) * 100
+    impact = score + created / 100000 + num_comments * 10 + abs(2 - polarity) * 100 #TODO: adjust formula
     return impact
 
 def sentimentAnalysis(posts):
@@ -55,7 +55,7 @@ def scrape():
     posts = []
 
     # get 10 hot posts from the WSB subreddit
-    hot_posts = reddit.subreddit('WallStreetBets').hot(limit=1)
+    hot_posts = reddit.subreddit('WallStreetBets').hot(limit=1) #TODO: adjust limit
     for post in hot_posts:
         comments = extract_comments(post)
         posts.append({
