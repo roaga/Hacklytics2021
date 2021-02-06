@@ -1,7 +1,21 @@
 import requests
+import os
+from dotenv import load_dotenv
 import praw
+from ibm_watson import NaturalLanguageUnderstandingV1
+from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
+from ibm_watson.natural_language_understanding_v1 import Features, SentimentOptions
 
 reddit = praw.Reddit(client_id='7pdHgJ0aNnIqkQ', client_secret='QU-vPCVM1dAO3beUcrIghrHraRoULA', user_agent='my_user_agent')
+load_dotenv()
+IBM_CLOUD_KEY = os.getenv('IBM_CLOUD_KEY')
+
+authenticator = IAMAuthenticator(IBM_CLOUD_KEY)
+natural_language_understanding = NaturalLanguageUnderstandingV1(
+    version='2020-08-01',
+    authenticator=authenticator
+)
+natural_language_understanding.set_service_url('https://api.au-syd.natural-language-understanding.watson.cloud.ibm.com/instances/90774996-ec17-4440-b524-2c61f3a14481')
 
 def extract_comments(post):
     # comment_text = []
@@ -22,12 +36,20 @@ def weigh(post_data):
     return impact
 
 def sentimentAnalysis(posts):
-    # using Sentiment140 API
-    data = {"data": posts}
-    r = requests.post('http://www.sentiment140.com/api/bulkClassifyJson?appid=ro.agarwal@hotmail.com', data = data)
-    print(r.content)
-    return r.text #TODO: get response body properly, return ['data'] key's value
+    # # using Sentiment140 API
+    # data = {"data": posts}
+    # r = requests.post('http://www.sentiment140.com/api/bulkClassifyJson?appid=ro.agarwal@hotmail.com', data = data)
+    # print(r.content)
+    # return r.text #TODO: get response body properly, return ['data'] key's value
 
+    # using IBM Watson NLU
+    for post in posts:
+        sentiment_response = natural_language_understanding.analyze(
+            text=post["text"],
+            features=Features(sentiment=SentimentOptions())).get_result()
+        sentiment = sentiment_response['sentiment']['document']['score']
+        post['polarity'] = sentiment * 2 + 2 # to align with Sentiment140 for ease
+    return posts
 
 def scrape():
     posts = []
@@ -55,7 +77,8 @@ def scrape():
 data = scrape()
 data = sentimentAnalysis(data)
 for i, item in enumerate(data):
+    print(item)
     weight = weigh(item)
-    data.append({"weight": weight})
+    item["weight"] = weight
 
 print(data)
