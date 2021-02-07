@@ -2,7 +2,6 @@ import requests
 import os
 from dotenv import load_dotenv
 import praw
-from pandas import DataFrame
 import re
 from ibm_watson import NaturalLanguageUnderstandingV1
 from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
@@ -11,12 +10,14 @@ from ibm_watson.natural_language_understanding_v1 import Features, SentimentOpti
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
+import schedule
+import time
 
 cred = credentials.Certificate("./firebaseserviceaccount.json")
 firebase_admin.initialize_app(cred)
 db = firestore.client()
 
-reddit = praw.Reddit(client_id='7pdHgJ0aNnIqkQ', client_secret='QU-vPCVM1dAO3beUcrIghrHraRoULA', user_agent='hacklytics:rhn')
+reddit = praw.Reddit(client_id='reddit_client_id', client_secret='reddit_client_secret', user_agent='hacklytics:rhn')
 
 load_dotenv()
 IBM_CLOUD_KEY = os.getenv('IBM_CLOUD_KEY')
@@ -30,7 +31,7 @@ natural_language_understanding.set_service_url('https://api.au-syd.natural-langu
 
 def get_stock_stats(posts):
     stocks = {}
-    with open('stocknames.txt') as f:
+    with open('stocknames_stripped.txt') as f:
         next(f) #skip header
         for stock in f:
             stock = re.split('[|]',stock)
@@ -80,7 +81,6 @@ def weigh(post_data):
     return impact
 
 def sentimentAnalysis(posts):
-
     # using IBM Watson NLU
     for post in posts:
         sentiment_response = natural_language_understanding.analyze(
@@ -94,7 +94,7 @@ def scrape():
     posts = []
 
     # get 10 hot posts from the WSB subreddit
-    hot_posts = reddit.subreddit('WallStreetBets').hot(limit=1) #TODO: adjust limit
+    hot_posts = reddit.subreddit('WallStreetBets').hot(limit=25) #TODO: adjust limit
     for post in hot_posts:
         comments = extract_comments(post)
         posts.append({
@@ -137,14 +137,23 @@ def upload(stocks_data):
             "weight": stock_data["weight"]
             })
 
-#TODO: put on periodic loop
-data = scrape()
-data = sentimentAnalysis(data)
-for i, item in enumerate(data):
-    #print(item)
-    weight = weigh(item)
-    item["weight"] = weight
 
-stocks = get_stock_stats(data)
-upload(stocks)
+def job():
+    data = scrape()
+    data = sentimentAnalysis(data)
+    for i, item in enumerate(data):
+        #print(item)
+        weight = weigh(item)
+        item["weight"] = weight
 
+    stocks = get_stock_stats(data)
+    upload(stocks)
+    return
+
+schedule.every().day.at("01:00").do(job,'It is 01:00, running Reddit scraper...')
+
+while True:
+    schedule.run_pending()
+    time.sleep(120) # wait two minutes
+
+# nohup python3 scrapeReddit.py &

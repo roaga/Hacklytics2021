@@ -23,6 +23,7 @@ public class DataPt : MonoBehaviour
         } else {
             gameObject.GetComponent<MeshRenderer>().material = material1;
         }
+        gameObject.GetComponent<Renderer>().material.SetColor("_Color", new Color(transform.position.x, transform.position.y, transform.position.z, 1.0f));
     }
 
     public Dictionary<string, object> GetData() {

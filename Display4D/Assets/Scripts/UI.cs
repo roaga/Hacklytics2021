@@ -7,9 +7,9 @@ using TMPro;
 public class UI : MonoBehaviour
 {
     public static string title = "";
-    float polarity = 0f;
-    float popularity = 0f;
-    float engagement = 0f;
+    public static float polarity = 0f;
+    public static float popularity = 0f;
+    public static float engagement = 0f;
 
     public TMPro.TextMeshProUGUI titleText;
     public TMPro.TextMeshProUGUI polarityText;
@@ -32,17 +32,19 @@ public class UI : MonoBehaviour
         engagementText.text = "Engagement: " + engagement.ToString();
     }
 
-    void OnMouseDown() {
-        Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
-        RaycastHit hit;
+    // void OnMouseDown() {
+    //     Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
+    //     RaycastHit hit;
+    //     Debug.Log("Click");
 
-        if (Physics.Raycast(ray, out hit, 100f) && hit.collider.gameObject.tag == "DataPt") {
-            GameObject pt = hit.collider.gameObject;
-            Dictionary<string, object> data = pt.GetComponent<DataPt>().GetData();
-            title = (string) data["title"];
-            polarity = System.Convert.ToSingle(data["polarity"]);
-            engagement = System.Convert.ToSingle(data["engagement"]);
-            popularity = System.Convert.ToSingle(data["popularity"]);
-        } 
-    }
+    //     if (Physics.Raycast(ray, out hit, 100f) && hit.collider.gameObject.tag == "DataPt") {
+    //         Debug.Log("Clicked data pt...");
+    //         GameObject pt = hit.collider.gameObject;
+    //         Dictionary<string, object> data = pt.GetComponent<DataPt>().GetData();
+    //         title = (string) data["title"];
+    //         polarity = System.Convert.ToSingle(data["polarity"]);
+    //         engagement = System.Convert.ToSingle(data["engagement"]);
+    //         popularity = System.Convert.ToSingle(data["popularity"]);
+    //     } 
+    // }
 }
