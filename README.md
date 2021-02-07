@@ -10,6 +10,6 @@ Python for web-scraping.
 IBM Watson NLU for sentiment anaysis. 
 
 ## More
-Check out our [https://devpost.com/software/stonklytics?ref_content=user-portfolio&ref_feature=in_progress](DevPost).
+Check out our [DevPost](https://devpost.com/software/stonklytics?ref_content=user-portfolio&ref_feature=in_progress).
 
 
