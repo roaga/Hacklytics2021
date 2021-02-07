@@ -33802,8 +33802,12 @@ struct  InputControl_t52BBDB2A486822D5220B188AC65039DFD6E38DBA  : public MonoBeh
 public:
 	// UnityEngine.GameObject InputControl::cameraOrbit
 	GameObject_tBD1244AD56B4E59AAD76E5E7C9282EC5CE434F0F * ___cameraOrbit_4;
+	// UnityEngine.GameObject InputControl::slider
+	GameObject_tBD1244AD56B4E59AAD76E5E7C9282EC5CE434F0F * ___slider_5;
 	// System.Single InputControl::rotateSpeed
-	float ___rotateSpeed_5;
+	float ___rotateSpeed_6;
+	// System.Single InputControl::scrollFactor
+	float ___scrollFactor_7;
 
 public:
 	inline static int32_t get_offset_of_cameraOrbit_4() { return static_cast<int32_t>(offsetof(InputControl_t52BBDB2A486822D5220B188AC65039DFD6E38DBA, ___cameraOrbit_4)); }
@@ -33815,12 +33819,29 @@ public:
 		Il2CppCodeGenWriteBarrier((void**)(&___cameraOrbit_4), (void*)value);
 	}
 
-	inline static int32_t get_offset_of_rotateSpeed_5() { return static_cast<int32_t>(offsetof(InputControl_t52BBDB2A486822D5220B188AC65039DFD6E38DBA, ___rotateSpeed_5)); }
-	inline float get_rotateSpeed_5() const { return ___rotateSpeed_5; }
-	inline float* get_address_of_rotateSpeed_5() { return &___rotateSpeed_5; }
-	inline void set_rotateSpeed_5(float value)
+	inline static int32_t get_offset_of_slider_5() { return static_cast<int32_t>(offsetof(InputControl_t52BBDB2A486822D5220B188AC65039DFD6E38DBA, ___slider_5)); }
+	inline GameObject_tBD1244AD56B4E59AAD76E5E7C9282EC5CE434F0F * get_slider_5() const { return ___slider_5; }
+	inline GameObject_tBD1244AD56B4E59AAD76E5E7C9282EC5CE434F0F ** get_address_of_slider_5() { return &___slider_5; }
+	inline void set_slider_5(GameObject_tBD1244AD56B4E59AAD76E5E7C9282EC5CE434F0F * value)
 	{
-		___rotateSpeed_5 = value;
+		___slider_5 = value;
+		Il2CppCodeGenWriteBarrier((void**)(&___slider_5), (void*)value);
+	}
+
+	inline static int32_t get_offset_of_rotateSpeed_6() { return static_cast<int32_t>(offsetof(InputControl_t52BBDB2A486822D5220B188AC65039DFD6E38DBA, ___rotateSpeed_6)); }
+	inline float get_rotateSpeed_6() const { return ___rotateSpeed_6; }
+	inline float* get_address_of_rotateSpeed_6() { return &___rotateSpeed_6; }
+	inline void set_rotateSpeed_6(float value)
+	{
+		___rotateSpeed_6 = value;
+	}
+
+	inline static int32_t get_offset_of_scrollFactor_7() { return static_cast<int32_t>(offsetof(InputControl_t52BBDB2A486822D5220B188AC65039DFD6E38DBA, ___scrollFactor_7)); }
+	inline float get_scrollFactor_7() const { return ___scrollFactor_7; }
+	inline float* get_address_of_scrollFactor_7() { return &___scrollFactor_7; }
+	inline void set_scrollFactor_7(float value)
+	{
+		___scrollFactor_7 = value;
 	}
 };
 
@@ -34077,12 +34098,6 @@ public:
 struct  UI_t483A5B13DFBAAC88C835D7630A6EAF04F9CF0658  : public MonoBehaviour_t4A60845CF505405AF8BE8C61CC07F75CADEF6429
 {
 public:
-	// System.Single UI::polarity
-	float ___polarity_5;
-	// System.Single UI::popularity
-	float ___popularity_6;
-	// System.Single UI::engagement
-	float ___engagement_7;
 	// TMPro.TextMeshProUGUI UI::titleText
 	TextMeshProUGUI_tBA60B913AB6151F8563F7078AD67EB6458129438 * ___titleText_8;
 	// TMPro.TextMeshProUGUI UI::polarityText
@@ -34093,30 +34108,6 @@ public:
 	TextMeshProUGUI_tBA60B913AB6151F8563F7078AD67EB6458129438 * ___engagementText_11;
 
 public:
-	inline static int32_t get_offset_of_polarity_5() { return static_cast<int32_t>(offsetof(UI_t483A5B13DFBAAC88C835D7630A6EAF04F9CF0658, ___polarity_5)); }
-	inline float get_polarity_5() const { return ___polarity_5; }
-	inline float* get_address_of_polarity_5() { return &___polarity_5; }
-	inline void set_polarity_5(float value)
-	{
-		___polarity_5 = value;
-	}
-
-	inline static int32_t get_offset_of_popularity_6() { return static_cast<int32_t>(offsetof(UI_t483A5B13DFBAAC88C835D7630A6EAF04F9CF0658, ___popularity_6)); }
-	inline float get_popularity_6() const { return ___popularity_6; }
-	inline float* get_address_of_popularity_6() { return &___popularity_6; }
-	inline void set_popularity_6(float value)
-	{
-		___popularity_6 = value;
-	}
-
-	inline static int32_t get_offset_of_engagement_7() { return static_cast<int32_t>(offsetof(UI_t483A5B13DFBAAC88C835D7630A6EAF04F9CF0658, ___engagement_7)); }
-	inline float get_engagement_7() const { return ___engagement_7; }
-	inline float* get_address_of_engagement_7() { return &___engagement_7; }
-	inline void set_engagement_7(float value)
-	{
-		___engagement_7 = value;
-	}
-
 	inline static int32_t get_offset_of_titleText_8() { return static_cast<int32_t>(offsetof(UI_t483A5B13DFBAAC88C835D7630A6EAF04F9CF0658, ___titleText_8)); }
 	inline TextMeshProUGUI_tBA60B913AB6151F8563F7078AD67EB6458129438 * get_titleText_8() const { return ___titleText_8; }
 	inline TextMeshProUGUI_tBA60B913AB6151F8563F7078AD67EB6458129438 ** get_address_of_titleText_8() { return &___titleText_8; }
@@ -34159,6 +34150,12 @@ struct UI_t483A5B13DFBAAC88C835D7630A6EAF04F9CF0658_StaticFields
 public:
 	// System.String UI::title
 	String_t* ___title_4;
+	// System.Single UI::polarity
+	float ___polarity_5;
+	// System.Single UI::popularity
+	float ___popularity_6;
+	// System.Single UI::engagement
+	float ___engagement_7;
 
 public:
 	inline static int32_t get_offset_of_title_4() { return static_cast<int32_t>(offsetof(UI_t483A5B13DFBAAC88C835D7630A6EAF04F9CF0658_StaticFields, ___title_4)); }
@@ -34168,6 +34165,30 @@ public:
 	{
 		___title_4 = value;
 		Il2CppCodeGenWriteBarrier((void**)(&___title_4), (void*)value);
+	}
+
+	inline static int32_t get_offset_of_polarity_5() { return static_cast<int32_t>(offsetof(UI_t483A5B13DFBAAC88C835D7630A6EAF04F9CF0658_StaticFields, ___polarity_5)); }
+	inline float get_polarity_5() const { return ___polarity_5; }
+	inline float* get_address_of_polarity_5() { return &___polarity_5; }
+	inline void set_polarity_5(float value)
+	{
+		___polarity_5 = value;
+	}
+
+	inline static int32_t get_offset_of_popularity_6() { return static_cast<int32_t>(offsetof(UI_t483A5B13DFBAAC88C835D7630A6EAF04F9CF0658_StaticFields, ___popularity_6)); }
+	inline float get_popularity_6() const { return ___popularity_6; }
+	inline float* get_address_of_popularity_6() { return &___popularity_6; }
+	inline void set_popularity_6(float value)
+	{
+		___popularity_6 = value;
+	}
+
+	inline static int32_t get_offset_of_engagement_7() { return static_cast<int32_t>(offsetof(UI_t483A5B13DFBAAC88C835D7630A6EAF04F9CF0658_StaticFields, ___engagement_7)); }
+	inline float get_engagement_7() const { return ___engagement_7; }
+	inline float* get_address_of_engagement_7() { return &___engagement_7; }
+	inline void set_engagement_7(float value)
+	{
+		___engagement_7 = value;
 	}
 };
 
@@ -50479,19 +50500,21 @@ IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable2903[2] =
 };
 extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize2904;
 const Il2CppTypeDefinitionSizes g_typeDefinitionSize2904 = { sizeof (InputControl_t52BBDB2A486822D5220B188AC65039DFD6E38DBA), -1, 0, 0 };
-IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable2904[2] = 
+IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable2904[4] = 
 {
 	InputControl_t52BBDB2A486822D5220B188AC65039DFD6E38DBA::get_offset_of_cameraOrbit_4(),
-	InputControl_t52BBDB2A486822D5220B188AC65039DFD6E38DBA::get_offset_of_rotateSpeed_5(),
+	InputControl_t52BBDB2A486822D5220B188AC65039DFD6E38DBA::get_offset_of_slider_5(),
+	InputControl_t52BBDB2A486822D5220B188AC65039DFD6E38DBA::get_offset_of_rotateSpeed_6(),
+	InputControl_t52BBDB2A486822D5220B188AC65039DFD6E38DBA::get_offset_of_scrollFactor_7(),
 };
 extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize2905;
 const Il2CppTypeDefinitionSizes g_typeDefinitionSize2905 = { sizeof (UI_t483A5B13DFBAAC88C835D7630A6EAF04F9CF0658), -1, sizeof(UI_t483A5B13DFBAAC88C835D7630A6EAF04F9CF0658_StaticFields), 0 };
 IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable2905[8] = 
 {
 	UI_t483A5B13DFBAAC88C835D7630A6EAF04F9CF0658_StaticFields::get_offset_of_title_4(),
-	UI_t483A5B13DFBAAC88C835D7630A6EAF04F9CF0658::get_offset_of_polarity_5(),
-	UI_t483A5B13DFBAAC88C835D7630A6EAF04F9CF0658::get_offset_of_popularity_6(),
-	UI_t483A5B13DFBAAC88C835D7630A6EAF04F9CF0658::get_offset_of_engagement_7(),
+	UI_t483A5B13DFBAAC88C835D7630A6EAF04F9CF0658_StaticFields::get_offset_of_polarity_5(),
+	UI_t483A5B13DFBAAC88C835D7630A6EAF04F9CF0658_StaticFields::get_offset_of_popularity_6(),
+	UI_t483A5B13DFBAAC88C835D7630A6EAF04F9CF0658_StaticFields::get_offset_of_engagement_7(),
 	UI_t483A5B13DFBAAC88C835D7630A6EAF04F9CF0658::get_offset_of_titleText_8(),
 	UI_t483A5B13DFBAAC88C835D7630A6EAF04F9CF0658::get_offset_of_polarityText_9(),
 	UI_t483A5B13DFBAAC88C835D7630A6EAF04F9CF0658::get_offset_of_popularityText_10(),

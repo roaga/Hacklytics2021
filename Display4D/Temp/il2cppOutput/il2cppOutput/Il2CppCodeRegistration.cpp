@@ -123,7 +123,7 @@ const Il2CppCodeRegistration g_CodeRegistration =
 	g_AttributeGenerators,
 	386,
 	g_UnresolvedVirtualMethodPointers,
-	202,
+	203,
 	g_Il2CppInteropData,
 	0,
 	NULL,

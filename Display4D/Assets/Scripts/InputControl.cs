@@ -15,7 +15,7 @@ public class InputControl : MonoBehaviour
    public float scrollFactor = 0f;
 
    void Update() {
-        if (Input.GetMouseButton(0)) {
+        if (Input.GetMouseButton(0) && !Input.GetMouseButtonDown(0)) {
             float h = rotateSpeed * Input.GetAxis("Mouse X");
             float v = rotateSpeed * Input.GetAxis("Mouse Y");
 
@@ -24,7 +24,9 @@ public class InputControl : MonoBehaviour
             }
 
             cameraOrbit.transform.eulerAngles = new Vector3(cameraOrbit.transform.eulerAngles.x, cameraOrbit.transform.eulerAngles.y + h, cameraOrbit.transform.eulerAngles.z + v);
+        } 
 
+        if (Input.GetMouseButtonDown(0)) {
             Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
             RaycastHit hit;
             Debug.Log("Click");
@@ -38,7 +40,7 @@ public class InputControl : MonoBehaviour
                 UI.engagement = System.Convert.ToSingle(data["engagement"]);
                 UI.popularity = System.Convert.ToSingle(data["popularity"]);
             } 
-        } 
+        }
 
         // if (Input.touchCount >= 2) {
         //     Debug.Log("pinching...");
