@@ -10,6 +10,8 @@ from ibm_watson.natural_language_understanding_v1 import Features, SentimentOpti
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
+import schedule
+import time
 
 cred = credentials.Certificate("./firebaseserviceaccount.json")
 firebase_admin.initialize_app(cred)
@@ -135,14 +137,23 @@ def upload(stocks_data):
             "weight": stock_data["weight"]
             })
 
-#TODO: put on periodic loop
-data = scrape()
-data = sentimentAnalysis(data)
-for i, item in enumerate(data):
-    #print(item)
-    weight = weigh(item)
-    item["weight"] = weight
 
-stocks = get_stock_stats(data)
-upload(stocks)
+def job():
+    data = scrape()
+    data = sentimentAnalysis(data)
+    for i, item in enumerate(data):
+        #print(item)
+        weight = weigh(item)
+        item["weight"] = weight
 
+    stocks = get_stock_stats(data)
+    upload(stocks)
+    return
+
+schedule.every().day.at("01:00").do(job,'It is 01:00, running Reddit scraper...')
+
+while True:
+    schedule.run_pending()
+    time.sleep(120) # wait two minutes
+
+# nohup python3 scrapeReddit.py &
