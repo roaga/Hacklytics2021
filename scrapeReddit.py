@@ -17,7 +17,7 @@ cred = credentials.Certificate("./firebaseserviceaccount.json")
 firebase_admin.initialize_app(cred)
 db = firestore.client()
 
-reddit = praw.Reddit(client_id='7pdHgJ0aNnIqkQ', client_secret='QU-vPCVM1dAO3beUcrIghrHraRoULA', user_agent='hacklytics:rhn')
+reddit = praw.Reddit(client_id='reddit_client_id', client_secret='reddit_client_secret', user_agent='hacklytics:rhn')
 
 load_dotenv()
 IBM_CLOUD_KEY = os.getenv('IBM_CLOUD_KEY')
