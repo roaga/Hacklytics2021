@@ -10,7 +10,8 @@ public class InputControl : MonoBehaviour
 
    void Update() {
         if (Input.GetMouseButton(0) || Input.touchCount == 1) {
-            float h = rotateSpeed * Input.GetAxis("Mouse X"); // TODO: touch controls
+            Debug.Log("dragging...");
+            float h = rotateSpeed * Input.GetAxis("Mouse X");
             float v = rotateSpeed * Input.GetAxis("Mouse Y");
 
             if (cameraOrbit.transform.eulerAngles.z + v <= 0.1f || cameraOrbit.transform.eulerAngles.z + v >= 179.9f) {
@@ -22,6 +23,7 @@ public class InputControl : MonoBehaviour
 
         float scrollFactor; 
         if (Input.touchCount >= 2) {
+            Debug.Log("pinching...");
             Touch touchZero = Input.GetTouch(0);
             Touch touchOne = Input.GetTouch(1);
 

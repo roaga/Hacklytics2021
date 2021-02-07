@@ -68,13 +68,15 @@ extern void UI_Update_m9ABE766E5AAD8E5DC1B744811854FCB7AB542D42 (void);
 extern void UI_OnMouseDown_m3F81EEC49B5AD73E77DB1838FAE7935361D54ED3 (void);
 // 0x00000018 System.Void UI::.ctor()
 extern void UI__ctor_mC47B6E0B668A07DDA00F3711BFE708D91BB1C763 (void);
-// 0x00000019 System.Void FirebaseReader_<>c::.cctor()
+// 0x00000019 System.Void UI::.cctor()
+extern void UI__cctor_mE1F8449619814C65353E67B438E9BD5634918118 (void);
+// 0x0000001A System.Void FirebaseReader_<>c::.cctor()
 extern void U3CU3Ec__cctor_m4C1E27361D357808B86B14422812E71961BD45EC (void);
-// 0x0000001A System.Void FirebaseReader_<>c::.ctor()
+// 0x0000001B System.Void FirebaseReader_<>c::.ctor()
 extern void U3CU3Ec__ctor_m2DFCEBF6D31CD846FB8A7279BAAB9DFC48E73A31 (void);
-// 0x0000001B System.Void FirebaseReader_<>c::<GetStocks>b__3_0(System.Threading.Tasks.Task`1<Firebase.Firestore.QuerySnapshot>)
+// 0x0000001C System.Void FirebaseReader_<>c::<GetStocks>b__3_0(System.Threading.Tasks.Task`1<Firebase.Firestore.QuerySnapshot>)
 extern void U3CU3Ec_U3CGetStocksU3Eb__3_0_m2979BC92723280D13F1AEC62866523B807CB7066 (void);
-static Il2CppMethodPointer s_methodPointers[27] = 
+static Il2CppMethodPointer s_methodPointers[28] = 
 {
 	CSVReader_Read_m4DF3131B7A46F779752B29C9E219DDCFF31551CD,
 	CSVReader__ctor_mC259EFA1874891B2736A0559B5614CCB8C1BD9AC,
@@ -100,11 +102,12 @@ static Il2CppMethodPointer s_methodPointers[27] =
 	UI_Update_m9ABE766E5AAD8E5DC1B744811854FCB7AB542D42,
 	UI_OnMouseDown_m3F81EEC49B5AD73E77DB1838FAE7935361D54ED3,
 	UI__ctor_mC47B6E0B668A07DDA00F3711BFE708D91BB1C763,
+	UI__cctor_mE1F8449619814C65353E67B438E9BD5634918118,
 	U3CU3Ec__cctor_m4C1E27361D357808B86B14422812E71961BD45EC,
 	U3CU3Ec__ctor_m2DFCEBF6D31CD846FB8A7279BAAB9DFC48E73A31,
 	U3CU3Ec_U3CGetStocksU3Eb__3_0_m2979BC92723280D13F1AEC62866523B807CB7066,
 };
-static const int32_t s_InvokerIndices[27] = 
+static const int32_t s_InvokerIndices[28] = 
 {
 	0,
 	23,
@@ -131,6 +134,7 @@ static const int32_t s_InvokerIndices[27] =
 	23,
 	23,
 	3,
+	3,
 	23,
 	26,
 };
@@ -138,7 +142,7 @@ extern const Il2CppCodeGenModule g_AssemblyU2DCSharpCodeGenModule;
 const Il2CppCodeGenModule g_AssemblyU2DCSharpCodeGenModule = 
 {
 	"Assembly-CSharp.dll",
-	27,
+	28,
 	s_methodPointers,
 	s_InvokerIndices,
 	0,

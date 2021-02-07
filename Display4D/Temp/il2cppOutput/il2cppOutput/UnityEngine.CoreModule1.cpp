@@ -11895,10 +11895,10 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void RenderTextureDescriptor_set_enableRandom
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void RenderTextureDescriptor_set_useDynamicScale_m7DA7110A51900A67962FB0839833928B20F64BE7 (RenderTextureDescriptor_t74FEC57A54F89E11748E1865F7DCA3565BFAF58E * __this, bool ___value0, const RuntimeMethod* method);
 // UnityEngine.Material UnityEngine.Renderer::GetMaterial()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Material_tF7DB3BF0C24DEC2FE0CB51E5DF5053D5223C8598 * Renderer_GetMaterial_m370ADC0227BC648BEFAAF85AFB09722E8B20024B (Renderer_t0556D67DD582620D1F495627EDE30D03284151F4 * __this, const RuntimeMethod* method);
-// UnityEngine.Material UnityEngine.Renderer::GetSharedMaterial()
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Material_tF7DB3BF0C24DEC2FE0CB51E5DF5053D5223C8598 * Renderer_GetSharedMaterial_m3819AC6D141381FD4C99793E855D2ACED6FB3071 (Renderer_t0556D67DD582620D1F495627EDE30D03284151F4 * __this, const RuntimeMethod* method);
 // System.Void UnityEngine.Renderer::SetMaterial(UnityEngine.Material)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Renderer_SetMaterial_m68B4F4BB5C58FB88AE7AF3829B532869C781FD0F (Renderer_t0556D67DD582620D1F495627EDE30D03284151F4 * __this, Material_tF7DB3BF0C24DEC2FE0CB51E5DF5053D5223C8598 * ___m0, const RuntimeMethod* method);
+// UnityEngine.Material UnityEngine.Renderer::GetSharedMaterial()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Material_tF7DB3BF0C24DEC2FE0CB51E5DF5053D5223C8598 * Renderer_GetSharedMaterial_m3819AC6D141381FD4C99793E855D2ACED6FB3071 (Renderer_t0556D67DD582620D1F495627EDE30D03284151F4 * __this, const RuntimeMethod* method);
 // System.Void UnityEngine.Rendering.BatchCullingContext::.ctor(Unity.Collections.NativeArray`1<UnityEngine.Plane>,Unity.Collections.NativeArray`1<UnityEngine.Rendering.BatchVisibility>,Unity.Collections.NativeArray`1<System.Int32>,UnityEngine.Rendering.LODParameters)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void BatchCullingContext__ctor_m5BB85EDAC0F7C5AFFABF7AD30F18AD272EA23E32 (BatchCullingContext_t63E5CFC913AA7026C975A8A79778ACC6D06E965F * __this, NativeArray_1_t83B803BC075802611FE185566F7FE576D1B85F52  ___inCullingPlanes0, NativeArray_1_t1D9423FECCE6FE0EBBFAB0CF4124B39FF8B66520  ___inOutBatchVisibility1, NativeArray_1_tC6374EC584BF0D6DD4AD6FA0FD00C2C82F82CCAF  ___outVisibleIndices2, LODParameters_t8CBE0C157487BE3E860DA9478FB46F80D3D1D960  ___inLodParameters3, const RuntimeMethod* method);
 // Unity.Collections.NativeArray`1<T> Unity.Collections.LowLevel.Unsafe.NativeArrayUnsafeUtility::ConvertExistingDataToNativeArray<UnityEngine.Plane>(System.Void*,System.Int32,Unity.Collections.Allocator)
@@ -22418,6 +22418,15 @@ IL_000a:
 	{
 		Material_tF7DB3BF0C24DEC2FE0CB51E5DF5053D5223C8598 * L_1 = V_0;
 		return L_1;
+	}
+}
+// System.Void UnityEngine.Renderer::set_material(UnityEngine.Material)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Renderer_set_material_mB4988AD6A93C7FDACC4C07A99D1DAC23D10C0344 (Renderer_t0556D67DD582620D1F495627EDE30D03284151F4 * __this, Material_tF7DB3BF0C24DEC2FE0CB51E5DF5053D5223C8598 * ___value0, const RuntimeMethod* method)
+{
+	{
+		Material_tF7DB3BF0C24DEC2FE0CB51E5DF5053D5223C8598 * L_0 = ___value0;
+		Renderer_SetMaterial_m68B4F4BB5C58FB88AE7AF3829B532869C781FD0F(__this, L_0, /*hidden argument*/NULL);
+		return;
 	}
 }
 // UnityEngine.Material UnityEngine.Renderer::get_sharedMaterial()

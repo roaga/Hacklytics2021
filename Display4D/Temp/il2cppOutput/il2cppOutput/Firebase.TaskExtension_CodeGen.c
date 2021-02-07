@@ -50,15 +50,15 @@ static const Il2CppTokenRangePair s_rgctxIndices[3] =
 static const Il2CppRGCTXDefinition s_rgctxValues[10] = 
 {
 	{ (Il2CppRGCTXDataType)2, 18002 },
-	{ (Il2CppRGCTXDataType)3, 12469 },
 	{ (Il2CppRGCTXDataType)3, 12470 },
-	{ (Il2CppRGCTXDataType)2, 18003 },
 	{ (Il2CppRGCTXDataType)3, 12471 },
+	{ (Il2CppRGCTXDataType)2, 18003 },
 	{ (Il2CppRGCTXDataType)3, 12472 },
-	{ (Il2CppRGCTXDataType)2, 18004 },
 	{ (Il2CppRGCTXDataType)3, 12473 },
+	{ (Il2CppRGCTXDataType)2, 18004 },
 	{ (Il2CppRGCTXDataType)3, 12474 },
 	{ (Il2CppRGCTXDataType)3, 12475 },
+	{ (Il2CppRGCTXDataType)3, 12476 },
 };
 extern const Il2CppCodeGenModule g_Firebase_TaskExtensionCodeGenModule;
 const Il2CppCodeGenModule g_Firebase_TaskExtensionCodeGenModule = 
