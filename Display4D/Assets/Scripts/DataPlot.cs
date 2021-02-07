@@ -23,10 +23,12 @@ public class DataPlot : MonoBehaviour
  public GameObject PointHolder;
  
  // Use this for initialization
- void Start () {
-    // pointList = FirebaseReader.GetStocks();    
-    pointList = new List<Dictionary<string, object>>();
- }
+    void Start () {
+        //pointList = new List<Dictionary<string, object>>();
+        // pointList = CSVReader.Read(inputdata);
+        pointList = FirebaseReader.GetStocks();    
+
+    }
 
  void Update() {
     if (pointList.Count != 0 && !plotted) {
@@ -72,7 +74,7 @@ public class DataPlot : MonoBehaviour
         //     new Vector3(x, y, z), 
         //     Quaternion.identity);
 
-        //     dataPoint.transform.parent = PointHolder.transform;
+        //     // dataPoint.transform.parent = PointHolder.transform;
         //     dataPoint.transform.name = stock;
         //     dataPoint.GetComponent<Renderer>().material.color = 
         //     new Color(x,y,z, 1.0f);

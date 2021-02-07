@@ -15,7 +15,6 @@ public class InputControl : MonoBehaviour
 
    void Update() {
         if (Input.GetMouseButton(0)) {
-            Debug.Log("dragging...");
             float h = rotateSpeed * Input.GetAxis("Mouse X");
             float v = rotateSpeed * Input.GetAxis("Mouse Y");
 

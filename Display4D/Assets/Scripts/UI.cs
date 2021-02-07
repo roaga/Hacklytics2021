@@ -35,8 +35,10 @@ public class UI : MonoBehaviour
     void OnMouseDown() {
         Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
         RaycastHit hit;
+        Debug.Log("Click");
 
         if (Physics.Raycast(ray, out hit, 100f) && hit.collider.gameObject.tag == "DataPt") {
+            Debug.Log("Clicked data pt...");
             GameObject pt = hit.collider.gameObject;
             Dictionary<string, object> data = pt.GetComponent<DataPt>().GetData();
             title = (string) data["title"];

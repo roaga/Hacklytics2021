@@ -80,7 +80,6 @@ def weigh(post_data):
     return impact
 
 def sentimentAnalysis(posts):
-
     # using IBM Watson NLU
     for post in posts:
         sentiment_response = natural_language_understanding.analyze(
