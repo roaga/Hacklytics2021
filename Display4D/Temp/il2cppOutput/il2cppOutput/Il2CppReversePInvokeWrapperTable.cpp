@@ -1,0 +1,254 @@
+﻿#include "il2cpp-config.h"
+
+#ifndef _MSC_VER
+# include <alloca.h>
+#else
+# include <malloc.h>
+#endif
+
+
+#include <stdint.h>
+
+#include "codegen/il2cpp-codegen.h"
+#include "il2cpp-object-internals.h"
+
+
+// System.Char[]
+struct CharU5BU5D_t4CC6ABF0AD71BEC97E3C2F1E9C5677E46D3A75C2;
+// System.String
+struct String_t;
+// System.Void
+struct Void_t22962CB4C05B1D89B55A6E1139F0E87A90987017;
+
+
+
+IL2CPP_EXTERN_C_BEGIN
+IL2CPP_EXTERN_C_END
+
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winvalid-offsetof"
+#pragma clang diagnostic ignored "-Wunused-variable"
+#endif
+
+// System.Object
+
+
+// System.ValueType
+struct  ValueType_t4D0C27076F7C36E76190FB3328E232BCB1CD1FFF  : public RuntimeObject
+{
+public:
+
+public:
+};
+
+// Native definition for P/Invoke marshalling of System.ValueType
+struct ValueType_t4D0C27076F7C36E76190FB3328E232BCB1CD1FFF_marshaled_pinvoke
+{
+};
+// Native definition for COM marshalling of System.ValueType
+struct ValueType_t4D0C27076F7C36E76190FB3328E232BCB1CD1FFF_marshaled_com
+{
+};
+
+// System.Enum
+struct  Enum_t2AF27C02B8653AE29442467390005ABC74D8F521  : public ValueType_t4D0C27076F7C36E76190FB3328E232BCB1CD1FFF
+{
+public:
+
+public:
+};
+
+struct Enum_t2AF27C02B8653AE29442467390005ABC74D8F521_StaticFields
+{
+public:
+	// System.Char[] System.Enum::enumSeperatorCharArray
+	CharU5BU5D_t4CC6ABF0AD71BEC97E3C2F1E9C5677E46D3A75C2* ___enumSeperatorCharArray_0;
+
+public:
+	inline static int32_t get_offset_of_enumSeperatorCharArray_0() { return static_cast<int32_t>(offsetof(Enum_t2AF27C02B8653AE29442467390005ABC74D8F521_StaticFields, ___enumSeperatorCharArray_0)); }
+	inline CharU5BU5D_t4CC6ABF0AD71BEC97E3C2F1E9C5677E46D3A75C2* get_enumSeperatorCharArray_0() const { return ___enumSeperatorCharArray_0; }
+	inline CharU5BU5D_t4CC6ABF0AD71BEC97E3C2F1E9C5677E46D3A75C2** get_address_of_enumSeperatorCharArray_0() { return &___enumSeperatorCharArray_0; }
+	inline void set_enumSeperatorCharArray_0(CharU5BU5D_t4CC6ABF0AD71BEC97E3C2F1E9C5677E46D3A75C2* value)
+	{
+		___enumSeperatorCharArray_0 = value;
+		Il2CppCodeGenWriteBarrier((void**)(&___enumSeperatorCharArray_0), (void*)value);
+	}
+};
+
+// Native definition for P/Invoke marshalling of System.Enum
+struct Enum_t2AF27C02B8653AE29442467390005ABC74D8F521_marshaled_pinvoke
+{
+};
+// Native definition for COM marshalling of System.Enum
+struct Enum_t2AF27C02B8653AE29442467390005ABC74D8F521_marshaled_com
+{
+};
+
+// System.IntPtr
+struct  IntPtr_t 
+{
+public:
+	// System.Void* System.IntPtr::m_value
+	void* ___m_value_0;
+
+public:
+	inline static int32_t get_offset_of_m_value_0() { return static_cast<int32_t>(offsetof(IntPtr_t, ___m_value_0)); }
+	inline void* get_m_value_0() const { return ___m_value_0; }
+	inline void** get_address_of_m_value_0() { return &___m_value_0; }
+	inline void set_m_value_0(void* value)
+	{
+		___m_value_0 = value;
+	}
+};
+
+struct IntPtr_t_StaticFields
+{
+public:
+	// System.IntPtr System.IntPtr::Zero
+	intptr_t ___Zero_1;
+
+public:
+	inline static int32_t get_offset_of_Zero_1() { return static_cast<int32_t>(offsetof(IntPtr_t_StaticFields, ___Zero_1)); }
+	inline intptr_t get_Zero_1() const { return ___Zero_1; }
+	inline intptr_t* get_address_of_Zero_1() { return &___Zero_1; }
+	inline void set_Zero_1(intptr_t value)
+	{
+		___Zero_1 = value;
+	}
+};
+
+
+// System.Void
+struct  Void_t22962CB4C05B1D89B55A6E1139F0E87A90987017 
+{
+public:
+	union
+	{
+		struct
+		{
+		};
+		uint8_t Void_t22962CB4C05B1D89B55A6E1139F0E87A90987017__padding[1];
+	};
+
+public:
+};
+
+
+// Firebase.Firestore.FirestoreError
+struct  FirestoreError_t86E6D6C0EFECD17B6C12A49FF45DE02F78EACB67 
+{
+public:
+	// System.Int32 Firebase.Firestore.FirestoreError::value__
+	int32_t ___value___2;
+
+public:
+	inline static int32_t get_offset_of_value___2() { return static_cast<int32_t>(offsetof(FirestoreError_t86E6D6C0EFECD17B6C12A49FF45DE02F78EACB67, ___value___2)); }
+	inline int32_t get_value___2() const { return ___value___2; }
+	inline int32_t* get_address_of_value___2() { return &___value___2; }
+	inline void set_value___2(int32_t value)
+	{
+		___value___2 = value;
+	}
+};
+
+
+// Firebase.LogLevel
+struct  LogLevel_tC69575EF4D1F372E563D26D15A24B00EA684B4F8 
+{
+public:
+	// System.Int32 Firebase.LogLevel::value__
+	int32_t ___value___2;
+
+public:
+	inline static int32_t get_offset_of_value___2() { return static_cast<int32_t>(offsetof(LogLevel_tC69575EF4D1F372E563D26D15A24B00EA684B4F8, ___value___2)); }
+	inline int32_t get_value___2() const { return ___value___2; }
+	inline int32_t* get_address_of_value___2() { return &___value___2; }
+	inline void set_value___2(int32_t value)
+	{
+		___value___2 = value;
+	}
+};
+
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
+
+extern "C" void DEFAULT_CALL ReversePInvokeWrapper_OSSpecificSynchronizationContext_InvocationEntry_m056BCE43FF155AAE872FF7E565F8F72A50D26147(intptr_t ___arg0);
+extern "C" void DEFAULT_CALL ReversePInvokeWrapper_SWIGExceptionHelper_SetPendingApplicationException_mFE7727F29EF454DC82F7773C7DCA7DC4B9DCE688(char* ___message0);
+extern "C" void DEFAULT_CALL ReversePInvokeWrapper_SWIGExceptionHelper_SetPendingArithmeticException_m66D325C658E4D4A6F84E8BFF2A532FAAE96D5B5C(char* ___message0);
+extern "C" void DEFAULT_CALL ReversePInvokeWrapper_SWIGExceptionHelper_SetPendingDivideByZeroException_mEBC984AA86593D05467BC12012A3E1E33953ADED(char* ___message0);
+extern "C" void DEFAULT_CALL ReversePInvokeWrapper_SWIGExceptionHelper_SetPendingIndexOutOfRangeException_mD9473B8DC134A0E6BCE15305DC2E12E53AF6236E(char* ___message0);
+extern "C" void DEFAULT_CALL ReversePInvokeWrapper_SWIGExceptionHelper_SetPendingInvalidCastException_mB08BAC65C0DB20E0361AD747E5009B62EAACC5F8(char* ___message0);
+extern "C" void DEFAULT_CALL ReversePInvokeWrapper_SWIGExceptionHelper_SetPendingInvalidOperationException_mF62073712A93DD7570BEC306E4E2DF6049F31EA9(char* ___message0);
+extern "C" void DEFAULT_CALL ReversePInvokeWrapper_SWIGExceptionHelper_SetPendingIOException_m59B1FD0225B32443CC0685A249F0A301693C2744(char* ___message0);
+extern "C" void DEFAULT_CALL ReversePInvokeWrapper_SWIGExceptionHelper_SetPendingNullReferenceException_m5F381925BBBE581ADE8384B76FEA7D208B69ED4D(char* ___message0);
+extern "C" void DEFAULT_CALL ReversePInvokeWrapper_SWIGExceptionHelper_SetPendingOutOfMemoryException_m71E895F1202CBDC1909619B221AC6AB3276D7AF7(char* ___message0);
+extern "C" void DEFAULT_CALL ReversePInvokeWrapper_SWIGExceptionHelper_SetPendingOverflowException_m8FDE1CE2A3D3EB2DA8C7C12E28DD90C15E84D946(char* ___message0);
+extern "C" void DEFAULT_CALL ReversePInvokeWrapper_SWIGExceptionHelper_SetPendingSystemException_m8EC608208492B67293B9C2AC06D7B85B5B1B26E4(char* ___message0);
+extern "C" void DEFAULT_CALL ReversePInvokeWrapper_SWIGExceptionHelper_SetPendingArgumentException_mA47B953C5D09FDB764911484316FFDAAB4B0BE4A(char* ___message0, char* ___paramName1);
+extern "C" void DEFAULT_CALL ReversePInvokeWrapper_SWIGExceptionHelper_SetPendingArgumentNullException_m1DAEF08C4FAD2181E64B920B843C903538D09327(char* ___message0, char* ___paramName1);
+extern "C" void DEFAULT_CALL ReversePInvokeWrapper_SWIGExceptionHelper_SetPendingArgumentOutOfRangeException_m2DDA9CC01A5B010A4D682F0615F89EFEA2D3A385(char* ___message0, char* ___paramName1);
+extern "C" char* DEFAULT_CALL ReversePInvokeWrapper_SWIGStringHelper_CreateString_mF4B58DD5B3526C5E91D71786D528CC4ADADCF243(char* ___cString0);
+extern "C" void DEFAULT_CALL ReversePInvokeWrapper_LogUtil_LogMessageFromCallback_m51E15E038FD24735B401F08AE91DA68177B9C1F8(int32_t ___logLevel0, char* ___message1);
+extern "C" void DEFAULT_CALL ReversePInvokeWrapper_DocumentReference_DocumentSnapshotsHandler_m10A71CF78B74A9BCAEFE1CA83FA6B6F0FCBCA80B(int32_t ___callbackId0, intptr_t ___snapshotPtr1, int32_t ___errorCode2, char* ___errorMessage3);
+extern "C" void DEFAULT_CALL ReversePInvokeWrapper_FirebaseFirestore_SnapshotsInSyncHandler_m5CD50F4EA43FDB98E9CBA4A6BD2DB077AD876567(int32_t ___callbackId0);
+extern "C" void DEFAULT_CALL ReversePInvokeWrapper_SWIGExceptionHelper_SetPendingApplicationException_mA1FAC1D62C6AEC9F9AEB75A1C0009CE4AD3AC1D1(char* ___message0);
+extern "C" void DEFAULT_CALL ReversePInvokeWrapper_SWIGExceptionHelper_SetPendingArithmeticException_m2B15861F449CF8BEE170667FB3F79B3852CB1640(char* ___message0);
+extern "C" void DEFAULT_CALL ReversePInvokeWrapper_SWIGExceptionHelper_SetPendingDivideByZeroException_mFEE508B6BBA61B820DD74BA433828B4EF58762C5(char* ___message0);
+extern "C" void DEFAULT_CALL ReversePInvokeWrapper_SWIGExceptionHelper_SetPendingIndexOutOfRangeException_m84BC03A49171F12C234EEBB97A9DE99BCD2F5474(char* ___message0);
+extern "C" void DEFAULT_CALL ReversePInvokeWrapper_SWIGExceptionHelper_SetPendingInvalidCastException_m431425F086DA68A9277531E77DFFEBCD0285DCD7(char* ___message0);
+extern "C" void DEFAULT_CALL ReversePInvokeWrapper_SWIGExceptionHelper_SetPendingInvalidOperationException_m4D5891A2CD4B0DEDF618C578176BA73D7E2839CE(char* ___message0);
+extern "C" void DEFAULT_CALL ReversePInvokeWrapper_SWIGExceptionHelper_SetPendingIOException_m234B87DB0BD5F0862772890574E03E1B49C8F70E(char* ___message0);
+extern "C" void DEFAULT_CALL ReversePInvokeWrapper_SWIGExceptionHelper_SetPendingNullReferenceException_mCCCA229A92B38F05A3443210B8F377D8ACC4E9D6(char* ___message0);
+extern "C" void DEFAULT_CALL ReversePInvokeWrapper_SWIGExceptionHelper_SetPendingOutOfMemoryException_mB5520D2279CEAE1CE75D441B5F07CBBF690DE9B8(char* ___message0);
+extern "C" void DEFAULT_CALL ReversePInvokeWrapper_SWIGExceptionHelper_SetPendingOverflowException_m140B9238EF2C0BFC7901B7C0591047408A6288AB(char* ___message0);
+extern "C" void DEFAULT_CALL ReversePInvokeWrapper_SWIGExceptionHelper_SetPendingSystemException_mA07BD27B1F61985061930D6ABD56175682B4316D(char* ___message0);
+extern "C" void DEFAULT_CALL ReversePInvokeWrapper_SWIGExceptionHelper_SetPendingArgumentException_m52AF922F573894B1FE9C0E5C6300AB8B746F0A7E(char* ___message0, char* ___paramName1);
+extern "C" void DEFAULT_CALL ReversePInvokeWrapper_SWIGExceptionHelper_SetPendingArgumentNullException_mCE8D7CCA773FA07B10BDB77AA24F2155322A9356(char* ___message0, char* ___paramName1);
+extern "C" void DEFAULT_CALL ReversePInvokeWrapper_SWIGExceptionHelper_SetPendingArgumentOutOfRangeException_mA361CDCC001D7F1BCBF7AEB7B10E1AE61074053A(char* ___message0, char* ___paramName1);
+extern "C" char* DEFAULT_CALL ReversePInvokeWrapper_SWIGStringHelper_CreateString_m5A3F6230DCC306A7B15958343F0C39B90CD9A98F(char* ___cString0);
+extern "C" void DEFAULT_CALL ReversePInvokeWrapper_Future_QuerySnapshot_SWIG_CompletionDispatcher_m9CC401708203845908EBA0EAB40798CF98E6054B(int32_t ___key0);
+extern "C" void DEFAULT_CALL ReversePInvokeWrapper_Query_QuerySnapshotsHandler_mADF75437E968AAF9BA5ACFD556CD8263BB4A2A24(int32_t ___callbackId0, intptr_t ___snapshotPtr1, int32_t ___errorCode2, char* ___errorMessage3);
+
+
+extern const Il2CppMethodPointer g_ReversePInvokeWrapperPointers[];
+const Il2CppMethodPointer g_ReversePInvokeWrapperPointers[36] = 
+{
+	reinterpret_cast<Il2CppMethodPointer>(ReversePInvokeWrapper_OSSpecificSynchronizationContext_InvocationEntry_m056BCE43FF155AAE872FF7E565F8F72A50D26147),
+	reinterpret_cast<Il2CppMethodPointer>(ReversePInvokeWrapper_SWIGExceptionHelper_SetPendingApplicationException_mFE7727F29EF454DC82F7773C7DCA7DC4B9DCE688),
+	reinterpret_cast<Il2CppMethodPointer>(ReversePInvokeWrapper_SWIGExceptionHelper_SetPendingArithmeticException_m66D325C658E4D4A6F84E8BFF2A532FAAE96D5B5C),
+	reinterpret_cast<Il2CppMethodPointer>(ReversePInvokeWrapper_SWIGExceptionHelper_SetPendingDivideByZeroException_mEBC984AA86593D05467BC12012A3E1E33953ADED),
+	reinterpret_cast<Il2CppMethodPointer>(ReversePInvokeWrapper_SWIGExceptionHelper_SetPendingIndexOutOfRangeException_mD9473B8DC134A0E6BCE15305DC2E12E53AF6236E),
+	reinterpret_cast<Il2CppMethodPointer>(ReversePInvokeWrapper_SWIGExceptionHelper_SetPendingInvalidCastException_mB08BAC65C0DB20E0361AD747E5009B62EAACC5F8),
+	reinterpret_cast<Il2CppMethodPointer>(ReversePInvokeWrapper_SWIGExceptionHelper_SetPendingInvalidOperationException_mF62073712A93DD7570BEC306E4E2DF6049F31EA9),
+	reinterpret_cast<Il2CppMethodPointer>(ReversePInvokeWrapper_SWIGExceptionHelper_SetPendingIOException_m59B1FD0225B32443CC0685A249F0A301693C2744),
+	reinterpret_cast<Il2CppMethodPointer>(ReversePInvokeWrapper_SWIGExceptionHelper_SetPendingNullReferenceException_m5F381925BBBE581ADE8384B76FEA7D208B69ED4D),
+	reinterpret_cast<Il2CppMethodPointer>(ReversePInvokeWrapper_SWIGExceptionHelper_SetPendingOutOfMemoryException_m71E895F1202CBDC1909619B221AC6AB3276D7AF7),
+	reinterpret_cast<Il2CppMethodPointer>(ReversePInvokeWrapper_SWIGExceptionHelper_SetPendingOverflowException_m8FDE1CE2A3D3EB2DA8C7C12E28DD90C15E84D946),
+	reinterpret_cast<Il2CppMethodPointer>(ReversePInvokeWrapper_SWIGExceptionHelper_SetPendingSystemException_m8EC608208492B67293B9C2AC06D7B85B5B1B26E4),
+	reinterpret_cast<Il2CppMethodPointer>(ReversePInvokeWrapper_SWIGExceptionHelper_SetPendingArgumentException_mA47B953C5D09FDB764911484316FFDAAB4B0BE4A),
+	reinterpret_cast<Il2CppMethodPointer>(ReversePInvokeWrapper_SWIGExceptionHelper_SetPendingArgumentNullException_m1DAEF08C4FAD2181E64B920B843C903538D09327),
+	reinterpret_cast<Il2CppMethodPointer>(ReversePInvokeWrapper_SWIGExceptionHelper_SetPendingArgumentOutOfRangeException_m2DDA9CC01A5B010A4D682F0615F89EFEA2D3A385),
+	reinterpret_cast<Il2CppMethodPointer>(ReversePInvokeWrapper_SWIGStringHelper_CreateString_mF4B58DD5B3526C5E91D71786D528CC4ADADCF243),
+	reinterpret_cast<Il2CppMethodPointer>(ReversePInvokeWrapper_LogUtil_LogMessageFromCallback_m51E15E038FD24735B401F08AE91DA68177B9C1F8),
+	reinterpret_cast<Il2CppMethodPointer>(ReversePInvokeWrapper_DocumentReference_DocumentSnapshotsHandler_m10A71CF78B74A9BCAEFE1CA83FA6B6F0FCBCA80B),
+	reinterpret_cast<Il2CppMethodPointer>(ReversePInvokeWrapper_FirebaseFirestore_SnapshotsInSyncHandler_m5CD50F4EA43FDB98E9CBA4A6BD2DB077AD876567),
+	reinterpret_cast<Il2CppMethodPointer>(ReversePInvokeWrapper_SWIGExceptionHelper_SetPendingApplicationException_mA1FAC1D62C6AEC9F9AEB75A1C0009CE4AD3AC1D1),
+	reinterpret_cast<Il2CppMethodPointer>(ReversePInvokeWrapper_SWIGExceptionHelper_SetPendingArithmeticException_m2B15861F449CF8BEE170667FB3F79B3852CB1640),
+	reinterpret_cast<Il2CppMethodPointer>(ReversePInvokeWrapper_SWIGExceptionHelper_SetPendingDivideByZeroException_mFEE508B6BBA61B820DD74BA433828B4EF58762C5),
+	reinterpret_cast<Il2CppMethodPointer>(ReversePInvokeWrapper_SWIGExceptionHelper_SetPendingIndexOutOfRangeException_m84BC03A49171F12C234EEBB97A9DE99BCD2F5474),
+	reinterpret_cast<Il2CppMethodPointer>(ReversePInvokeWrapper_SWIGExceptionHelper_SetPendingInvalidCastException_m431425F086DA68A9277531E77DFFEBCD0285DCD7),
+	reinterpret_cast<Il2CppMethodPointer>(ReversePInvokeWrapper_SWIGExceptionHelper_SetPendingInvalidOperationException_m4D5891A2CD4B0DEDF618C578176BA73D7E2839CE),
+	reinterpret_cast<Il2CppMethodPointer>(ReversePInvokeWrapper_SWIGExceptionHelper_SetPendingIOException_m234B87DB0BD5F0862772890574E03E1B49C8F70E),
+	reinterpret_cast<Il2CppMethodPointer>(ReversePInvokeWrapper_SWIGExceptionHelper_SetPendingNullReferenceException_mCCCA229A92B38F05A3443210B8F377D8ACC4E9D6),
+	reinterpret_cast<Il2CppMethodPointer>(ReversePInvokeWrapper_SWIGExceptionHelper_SetPendingOutOfMemoryException_mB5520D2279CEAE1CE75D441B5F07CBBF690DE9B8),
+	reinterpret_cast<Il2CppMethodPointer>(ReversePInvokeWrapper_SWIGExceptionHelper_SetPendingOverflowException_m140B9238EF2C0BFC7901B7C0591047408A6288AB),
+	reinterpret_cast<Il2CppMethodPointer>(ReversePInvokeWrapper_SWIGExceptionHelper_SetPendingSystemException_mA07BD27B1F61985061930D6ABD56175682B4316D),
+	reinterpret_cast<Il2CppMethodPointer>(ReversePInvokeWrapper_SWIGExceptionHelper_SetPendingArgumentException_m52AF922F573894B1FE9C0E5C6300AB8B746F0A7E),
+	reinterpret_cast<Il2CppMethodPointer>(ReversePInvokeWrapper_SWIGExceptionHelper_SetPendingArgumentNullException_mCE8D7CCA773FA07B10BDB77AA24F2155322A9356),
+	reinterpret_cast<Il2CppMethodPointer>(ReversePInvokeWrapper_SWIGExceptionHelper_SetPendingArgumentOutOfRangeException_mA361CDCC001D7F1BCBF7AEB7B10E1AE61074053A),
+	reinterpret_cast<Il2CppMethodPointer>(ReversePInvokeWrapper_SWIGStringHelper_CreateString_m5A3F6230DCC306A7B15958343F0C39B90CD9A98F),
+	reinterpret_cast<Il2CppMethodPointer>(ReversePInvokeWrapper_Future_QuerySnapshot_SWIG_CompletionDispatcher_m9CC401708203845908EBA0EAB40798CF98E6054B),
+	reinterpret_cast<Il2CppMethodPointer>(ReversePInvokeWrapper_Query_QuerySnapshotsHandler_mADF75437E968AAF9BA5ACFD556CD8263BB4A2A24),
+};

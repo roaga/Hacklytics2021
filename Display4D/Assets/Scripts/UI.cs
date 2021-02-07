@@ -6,7 +6,7 @@ using TMPro;
 
 public class UI : MonoBehaviour
 {
-    string title = "";
+    public static string title = "";
     float polarity = 0f;
     float popularity = 0f;
     float engagement = 0f;

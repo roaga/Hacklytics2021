@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.iOS;
 
 public class InputControl : MonoBehaviour
 {
@@ -7,23 +8,37 @@ public class InputControl : MonoBehaviour
 
    public float rotateSpeed = 8f;
 
-   void Update()
-   {
-       if (Input.GetMouseButton(0))
-       {
-           float h = rotateSpeed * Input.GetAxis("Mouse X"); // TODO: touch controls
-           float v = rotateSpeed * Input.GetAxis("Mouse Y");
+   void Update() {
+        if (Input.GetMouseButton(0) || Input.touchCount == 1) {
+            float h = rotateSpeed * Input.GetAxis("Mouse X"); // TODO: touch controls
+            float v = rotateSpeed * Input.GetAxis("Mouse Y");
 
-           if (cameraOrbit.transform.eulerAngles.z + v <= 0.1f || cameraOrbit.transform.eulerAngles.z + v >= 179.9f)
-                v = 0;
+            if (cameraOrbit.transform.eulerAngles.z + v <= 0.1f || cameraOrbit.transform.eulerAngles.z + v >= 179.9f) {
+                    v = 0;
+            }
 
-           cameraOrbit.transform.eulerAngles = new Vector3(cameraOrbit.transform.eulerAngles.x, cameraOrbit.transform.eulerAngles.y + h, cameraOrbit.transform.eulerAngles.z + v);
-       }
+            cameraOrbit.transform.eulerAngles = new Vector3(cameraOrbit.transform.eulerAngles.x, cameraOrbit.transform.eulerAngles.y + h, cameraOrbit.transform.eulerAngles.z + v);
+        } 
 
-       float scrollFactor = Input.GetAxis("Mouse ScrollWheel");
+        float scrollFactor; 
+        if (Input.touchCount >= 2) {
+            Touch touchZero = Input.GetTouch(0);
+            Touch touchOne = Input.GetTouch(1);
 
-       if (scrollFactor != 0)
-       {
+            Vector2 touchZeroPrevPos = touchZero.position - touchZero.deltaPosition;
+            Vector2 touchOnePrevPos = touchOne.position - touchOne.deltaPosition;
+
+            float prevMagnitude = (touchZeroPrevPos - touchOnePrevPos).magnitude;
+            float currentMagnitude = (touchZero.position - touchOne.position).magnitude;
+
+            float difference = currentMagnitude - prevMagnitude;
+
+            scrollFactor = Mathf.Clamp(difference * 0.01f, 0, 1);
+        } else {
+            scrollFactor = Input.GetAxis("Mouse ScrollWheel");
+        }
+
+       if (scrollFactor != 0) {
            cameraOrbit.transform.localScale = cameraOrbit.transform.localScale * (1f - scrollFactor);
        }
 
