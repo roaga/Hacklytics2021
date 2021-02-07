@@ -30,7 +30,7 @@ natural_language_understanding.set_service_url('https://api.au-syd.natural-langu
 
 def get_stock_stats(posts):
     stocks = {}
-    with open('stocknames.txt') as f:
+    with open('stocknames_stripped.txt') as f:
         next(f) #skip header
         for stock in f:
             stock = re.split('[|]',stock)
@@ -93,7 +93,7 @@ def scrape():
     posts = []
 
     # get 10 hot posts from the WSB subreddit
-    hot_posts = reddit.subreddit('WallStreetBets').hot(limit=1) #TODO: adjust limit
+    hot_posts = reddit.subreddit('WallStreetBets').hot(limit=25) #TODO: adjust limit
     for post in hot_posts:
         comments = extract_comments(post)
         posts.append({
