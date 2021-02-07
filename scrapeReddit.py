@@ -2,7 +2,6 @@ import requests
 import os
 from dotenv import load_dotenv
 import praw
-from pandas import DataFrame
 import re
 from ibm_watson import NaturalLanguageUnderstandingV1
 from ibm_cloud_sdk_core.authenticators import IAMAuthenticator

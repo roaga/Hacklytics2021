@@ -33,18 +33,20 @@ public class DataPlot : MonoBehaviour
  void Update() {
     if (pointList.Count != 0 && !plotted) {
         plotted = true;
+        Debug.Log("num stocks: " + pointList.Count);
 
-        foreach (Dictionary<string, object> stock in pointList.GetRange(0, 10)) { // TODO: Adjust max stocks rendered
-            float x = System.Convert.ToSingle(stock["polarity"]);
-            float y =  System.Convert.ToSingle(stock["engagement"]);
-            float z =  System.Convert.ToSingle(stock["popularity"]);
-            float size = System.Convert.ToSingle(stock["weight"]) * 100f;
+        foreach (Dictionary<string, object> stock in pointList.GetRange(0, Mathf.Clamp(pointList.Count, 0, 100))) {
+            float x = Mathf.Clamp(System.Convert.ToSingle(stock["polarity"]) / 5f, 0, 25);
+            float y =  Mathf.Clamp(System.Convert.ToSingle(stock["engagement"]) / 1f, 0, 25);
+            float z =  Mathf.Clamp(System.Convert.ToSingle(stock["popularity"]) / 10000f, 0, 25);
+            float size = Mathf.Clamp(System.Convert.ToSingle(stock["weight"]) / 10000f, 0, 500);
 
             GameObject dataPoint = Instantiate(PointPrefab, new Vector3(x, y, z), Quaternion.identity);
             dataPoint.transform.parent = PointHolder.transform;
             dataPoint.transform.name = (string) stock["title"];
             dataPoint.GetComponent<DataPt>().SetData(stock);
-            dataPoint.GetComponent<Renderer>().material.color = new Color(x,y,z, 1.0f);
+            dataPoint.GetComponent<Renderer>().material.color = new Color(x, y, z, 1.0f);
+            dataPoint.GetComponent<Renderer>().material.SetColor("_Color", new Color(x, y, z, 1.0f));
             dataPoint.transform.localScale = new Vector3(size, size, size);
         }
 

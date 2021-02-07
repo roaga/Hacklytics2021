@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.iOS;
 using UnityEngine.UI;
 
@@ -23,6 +24,20 @@ public class InputControl : MonoBehaviour
             }
 
             cameraOrbit.transform.eulerAngles = new Vector3(cameraOrbit.transform.eulerAngles.x, cameraOrbit.transform.eulerAngles.y + h, cameraOrbit.transform.eulerAngles.z + v);
+
+            Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
+            RaycastHit hit;
+            Debug.Log("Click");
+
+            if (Physics.Raycast(ray, out hit, 100f) && hit.collider.gameObject.tag == "DataPt") {
+                Debug.Log("Clicked data pt...");
+                GameObject pt = hit.collider.gameObject;
+                Dictionary<string, object> data = pt.GetComponent<DataPt>().GetData();
+                UI.title = (string) data["title"];
+                UI.polarity = System.Convert.ToSingle(data["polarity"]);
+                UI.engagement = System.Convert.ToSingle(data["engagement"]);
+                UI.popularity = System.Convert.ToSingle(data["popularity"]);
+            } 
         } 
 
         // if (Input.touchCount >= 2) {
