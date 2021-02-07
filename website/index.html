@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>Stonklytics</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body style="background-color:black;">
+
+<!-- Header -->
+<header class="w3-display-container w3-content w3-center" style="max-width:1500px">
+  <img class="w3-image" src="stonks.png" alt="stonklytics" width="1200" height="800">
+  
+  <!-- Navbar (placed at the bottom of the header image) -->
+  <div class="w3-bar w3-light-grey w3-round w3-display-bottommiddle w3-hide-small" style="bottom:-16px">
+    <a href="#record1" class="w3-bar-item w3-button">Screeen Recording</a>
+    <a href="#record2" class="w3-bar-item w3-button">Physical User Experience</a>
+  </div>
+</header>
+
+<!-- Navbar on small screens -->
+<div class="w3-center w3-light-grey w3-padding-16 w3-hide-large w3-hide-medium">
+<div class="w3-bar w3-light-grey">
+  <a href="#record1" class="w3-bar-item w3-button">Screeen Recording</a>
+  <a href="#record2" class="w3-bar-item w3-button">Physical User Experience</a>
+</div>
+</div>
+<!-- Page content -->
+<div class="w3-content w3-padding-large w3-margin-top" id="record1">
+
+  <!-- Screen Recording -->
+  <video width="800" height="600" controls>
+  <source src="screen.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+  </video>
+
+  </div>
+
+<div class="w3-content w3-padding-large w3-margin-top" id="record2">
+
+  <!-- Contact -->
+  <video width="800" height="600" controls>
+  <source src="physical.mov" type="video/mov">
+  Your browser does not support the video tag.
+  </video>
+
+  </div>
+
+<!-- End page content -->
+</div>
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="/__/firebase/8.2.6/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="/__/firebase/8.2.6/firebase-analytics.js"></script>
+
+<!-- Initialize Firebase -->
+<script src="/__/firebase/init.js"></script>
+
+</body>
+</html>
