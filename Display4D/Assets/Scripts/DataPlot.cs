@@ -24,9 +24,8 @@ public class DataPlot : MonoBehaviour
  
  // Use this for initialization
  void Start () {
-    //  pointList = CSVReader.Read(inputdata);
-    pointList = FirebaseReader.GetStocks();    
-
+    // pointList = FirebaseReader.GetStocks();    
+    pointList = new List<Dictionary<string, object>>();
  }
 
  void Update() {
